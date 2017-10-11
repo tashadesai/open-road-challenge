@@ -1,8 +1,8 @@
 module.exports = {
-  entry: './browser/index.js', // assumes your entry point is the index.js in the browser folder of your project folder
+  entry: './browser/index.js',
   output: {
     path: __dirname,
-    filename: './public/bundle.js' // assumes your bundle.js will also be in the root of your project folder
+    filename: './public/bundle.js'
   },
   devtool: 'source-map',
   module: {
