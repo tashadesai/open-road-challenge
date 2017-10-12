@@ -1,3 +1,7 @@
 .post {
   border: 2px solid
 }
+
+.posts-container {
+  height: 70vh
+}

@@ -73,8 +73,8 @@ class Main extends Component {
         <h1 className="row justify-content-md-center align-items-center py-4">Today's Hot Reddit Posts</h1>
         <FivePostDisplay fivePosts = {this.props.fivePosts}/>
         <div className="row justify-content-md-center">
-          <button className="btn btn-primary" onClick={this.nextClick}>next</button>
-          <button className="btn" onClick={this.prevClick}>previous</button>
+          <button className="btn m-4" onClick={this.prevClick}>previous page</button>
+          <button className="btn m-4" onClick={this.nextClick}>next page</button>
         </div>
       </div>
     );

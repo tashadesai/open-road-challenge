@@ -23,13 +23,14 @@ export default class FivePostDisplay extends Component {
   render() {
     console.log(this.props)
     return (
-      <div className="row">
+      <div className="row justify-content-md-center posts-container">
         {
           this.props.fivePosts.map((post, i) => {
             return (
               <div key = {i} className="col m-2 post">
-                <h3>{"r/" + post.subreddit}</h3>
-                <a href={post.url}>{post.title}</a>
+                  <p className="subreddit my-4">{"r/" + post.subreddit}</p>
+                  <a className="title" href={"https://reddit.com/" + post.redditLink}>{post.title}</a>
+                  <p className="score mt-5">{"score: " + post.score}</p>
               </div>
             );
           })
