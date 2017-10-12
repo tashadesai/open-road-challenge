@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import {Link} from 'react-router-dom';
-import { connect } from 'react-redux';
 
 export default class FivePostDisplay extends Component {
   constructor(props) {
@@ -30,7 +28,7 @@ export default class FivePostDisplay extends Component {
               <div key = {i} className="col m-2 post">
                   <p className="subreddit my-4">{"r/" + post.subreddit}</p>
                   <a className="title" href={"https://reddit.com/" + post.redditLink}>{post.title}</a>
-                  <p className="score mt-5">{"score: " + post.score}</p>
+                  <p className="score mt-5 align-self-end">{"score: " + post.score}</p>
               </div>
             );
           })

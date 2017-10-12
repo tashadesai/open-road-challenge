@@ -49,36 +49,20 @@ export const getAllHotPosts = () => dispatch => {
           redditLink: post.data.permalink,
           url: post.data.url
         };
-        // console.log(post.data.preview.images[0].source.url)
         return newPost;
-        // postArr.push(newPost);
       });
 
       var fiveArr = [postArr[0], postArr[1], postArr[2], postArr[3], postArr[4]]
 
-      dispatch(getHotPosts(postArr))
+      dispatch(getHotPosts(postArr));
 
-      // Promise.all(promArr)
-      // .then(res => {
-      //   dispatch(getHotPosts(res));
-      // });
-
-      // dispatch(getHotPosts(postArr));
       return fiveArr;
     })
     .then((fiveArr) => {
         dispatch(setCurrFivePosts(fiveArr));
-      })
+      });
 };
 
 export const setFivePosts = (fiveArr) => dispatch => {
   dispatch(setCurrFivePosts(fiveArr));
-}
-
-//Using touringplans api
-// export const getAllAttractions = () => dispatch => {
-//   axios.get('https://touringplans.com/disneyland/attractions.json')
-//     .then(res => {
-//       dispatch(getAttractions(res.data));
-//     })
-// }
+};
