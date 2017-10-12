@@ -34,7 +34,6 @@ class Main extends Component {
   }
 
   nextClick(event) {
-    console.log("event", event.target.value)
     event.preventDefault;
     var newCount;
 
@@ -70,18 +69,19 @@ class Main extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Today's HOT Reddit Posts</h1>
-        <button onClick={this.prevClick}>previous</button>
+      <div className="container">
+        <h1 className="row justify-content-md-center align-items-center py-4">Today's Hot Reddit Posts</h1>
         <FivePostDisplay fivePosts = {this.props.fivePosts}/>
-        <button onClick={this.nextClick}>next</button>
+        <div className="row justify-content-md-center">
+          <button className="btn btn-primary" onClick={this.nextClick}>next</button>
+          <button className="btn" onClick={this.prevClick}>previous</button>
+        </div>
       </div>
     );
   }
 }
 
-import { getAllHotPosts } from '../reducers/posts';
-import { setFivePosts } from '../reducers/posts';
+import { getAllHotPosts, setFivePosts } from '../reducers/posts';
 
 const mapStateToProps = state => ({
   hotPosts: state.posts.hotPosts,

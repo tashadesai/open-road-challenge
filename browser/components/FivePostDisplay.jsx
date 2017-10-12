@@ -23,11 +23,11 @@ export default class FivePostDisplay extends Component {
   render() {
     console.log(this.props)
     return (
-      <div className="dt dt--fixed">
+      <div className="row">
         {
           this.props.fivePosts.map((post, i) => {
             return (
-              <div key = {i} className="dtc tc pv4 bg-black-10">
+              <div key = {i} className="col m-2 post">
                 <h3>{"r/" + post.subreddit}</h3>
                 <a href={post.url}>{post.title}</a>
               </div>
