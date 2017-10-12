@@ -69,7 +69,7 @@ class Main extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container main">
         <h1 className="row justify-content-md-center align-items-center py-4">Today's Hot Reddit Posts</h1>
         <FivePostDisplay fivePosts = {this.props.fivePosts}/>
         <div className="row justify-content-md-center">

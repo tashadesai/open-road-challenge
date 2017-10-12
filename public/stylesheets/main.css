@@ -3,5 +3,21 @@
 }
 
 .posts-container {
-  height: 70vh
+  min-height: 70%
+}
+
+.subreddit {
+
+}
+
+.title {
+
+}
+
+.score {
+
+}
+
+.main {
+  height: 100vh
 }
