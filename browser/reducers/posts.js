@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 //Actions
 const GET_HOT_POSTS = 'GET_HOT_POSTS';
+const GET_FIVE_POSTS = 'GET_FIVE_POSTS';
 
 //Action Creators
 const getHotPosts = hotPosts => ({
@@ -10,12 +11,21 @@ const getHotPosts = hotPosts => ({
   hotPosts
 });
 
+const setCurrFivePosts = fiveArr => ({
+  type: GET_FIVE_POSTS,
+  fiveArr
+})
+
 //Reducers
-export default function redditReducer (state = {hotPosts: []}, action) {
+export default function redditReducer (state = {hotPosts: [], fiveArr: []}, action) {
   const newState = _.merge({}, state);
   switch (action.type) {
     case GET_HOT_POSTS:
       newState.hotPosts = action.hotPosts;
+      break;
+
+    case GET_FIVE_POSTS:
+      newState.fiveArr = action.fiveArr;
       break;
 
     default:
@@ -29,9 +39,8 @@ export const getAllHotPosts = () => dispatch => {
   axios.get('https://www.reddit.com/hot.json')
     .then(res => {
       var returnedArr = res.data.data.children;
-      var postArr = [];
 
-      var promArr = returnedArr.map(post => {
+      var postArr = returnedArr.map(post => {
         var newPost = {
           title: post.data.title,
           subreddit: post.data.subreddit,
@@ -45,7 +54,9 @@ export const getAllHotPosts = () => dispatch => {
         // postArr.push(newPost);
       });
 
-      dispatch(getHotPosts(promArr))
+      var fiveArr = [postArr[0], postArr[1], postArr[2], postArr[3], postArr[4]]
+
+      dispatch(getHotPosts(postArr))
 
       // Promise.all(promArr)
       // .then(res => {
@@ -53,9 +64,16 @@ export const getAllHotPosts = () => dispatch => {
       // });
 
       // dispatch(getHotPosts(postArr));
-    });
+      return fiveArr;
+    })
+    .then((fiveArr) => {
+        dispatch(setCurrFivePosts(fiveArr));
+      })
 };
 
+export const setFivePosts = (fiveArr) => dispatch => {
+  dispatch(setCurrFivePosts(fiveArr));
+}
 
 //Using touringplans api
 // export const getAllAttractions = () => dispatch => {
