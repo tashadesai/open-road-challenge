@@ -9,7 +9,8 @@ class Main extends Component {
     super(props);
 
     this.shiftPosts = this.shiftPosts.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.nextClick = this.nextClick.bind(this);
+    this.prevClick = this.prevClick.bind(this);
   }
 
   componentWillMount() {
@@ -32,7 +33,8 @@ class Main extends Component {
     this.props.fetchFivePosts(arr);
   }
 
-  handleClick(event) {
+  nextClick(event) {
+    console.log("event", event.target.value)
     event.preventDefault;
     var newCount;
 
@@ -49,12 +51,30 @@ class Main extends Component {
     this.shiftPosts(newCount)
   }
 
+  prevClick(event) {
+    event.preventDefault;
+    var newCount;
+
+    if (this.state.count === 4) {
+      newCount = 24
+    } else {
+      newCount = this.state.count - 5;
+    }
+
+    this.setState({
+      count: newCount
+    })
+
+    this.shiftPosts(newCount)
+  }
+
   render() {
     return (
       <div>
         <h1>Today's HOT Reddit Posts</h1>
+        <button onClick={this.prevClick}>previous</button>
         <FivePostDisplay fivePosts = {this.props.fivePosts}/>
-        <button onClick={this.handleClick}>next</button>
+        <button onClick={this.nextClick}>next</button>
       </div>
     );
   }
