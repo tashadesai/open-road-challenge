@@ -23,7 +23,7 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 1337;
 app.listen(port, function () {
-  console.log(`Personal Site server listening on port ${port}`);
+  console.log(`Reddit Post server listening on port ${port}`);
 });
 
 module.exports = app;
